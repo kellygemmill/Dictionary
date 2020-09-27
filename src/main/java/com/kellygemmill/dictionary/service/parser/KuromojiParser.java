@@ -31,8 +31,8 @@ public class KuromojiParser implements ParserService {
     }
 
     @Override
-    public List<Word> parseInput(String input) {
-        return getTokens(input)
+    public List<Word> parseInput(String query) {
+        return getTokens(query)
                 .stream()
                 .map(this::tokenToWord)
                 .collect(Collectors.toList());
