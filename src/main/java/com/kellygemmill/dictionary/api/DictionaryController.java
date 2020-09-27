@@ -1,7 +1,7 @@
 package com.kellygemmill.dictionary.api;
 
-import com.kellygemmill.dictionary.service.TranslationService;
-import org.atilika.kuromoji.Token;
+import com.kellygemmill.dictionary.model.Word;
+import com.kellygemmill.dictionary.service.LookupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +12,16 @@ import java.util.List;
 //@CrossOrigin(origins = "*")
 public class DictionaryController {
 
-    private final TranslationService translationService;
+    private final LookupService lookupService;
 
     @Autowired
-    public DictionaryController(TranslationService translationService) {
-        this.translationService = translationService;
+    public DictionaryController(LookupService lookupService) {
+        this.lookupService = lookupService;
     }
 
     @GetMapping("/parse/{query}")
-    List<Token> translateQuery(@PathVariable String query) {
-        return translationService.translate(query);
+    List<Word> lookupQuery(@PathVariable String query) {
+        return lookupService.parse(query);
     }
 
 }
