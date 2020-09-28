@@ -7,7 +7,7 @@ This is the backend for a Japanese dictionary app written in Java using Spring B
 Look up a word or phrase at [http://jisho-kg.herokuapp.com](http://jisho-kg.herokuapp.com). Currently only the parser has been implemented.
 
 ### API:
-Query the parser API directly with a get request to [http://jisho-api-kg.herokuapp.com/api/parser/{phrase}](http://sudoku-api-kg.herokuapp.com/api/parser/{phrase}). The get request will return a Word object consisting of the queried word, reading, part of speech, and base word (e.g. unconjugated verb).
+Query the parser API directly with a get request to [http://jisho-api-kg.herokuapp.com/api/parse/{query}](http://sudoku-api-kg.herokuapp.com/api/parse/{query}). The get request will return a Word object consisting of the queried word, reading, part of speech, and base word (e.g. unconjugated verb).
 
 ## Model: 
 The following models are used in the Dictionary backend.
@@ -39,4 +39,4 @@ This class will be used to perform lookups in the dictionary. Currently, the Loo
 ## API: 
 
 ### DictionaryController:
-This class contains the API to call the solver. Currently the API only has a get mapping to the ParserService located at /api/parser/{query}.
+This class contains the API to call the LookupService. Currently the API only has a get mapping to parse an input, located at /api/parse/{query}.
