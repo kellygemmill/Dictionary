@@ -7,7 +7,7 @@ const SingleResult = ({value}) => {
                 <li>Surface Form: {value.surfaceForm}</li>
                 <li>Reading: {value.reading}</li>
                 <li>Part of Speech: {value.partOfSpeech}</li>
-                <li>Base Form: {value.baseForm}</li>
+                {/* <li>Base Form: {value.baseForm}</li> */}
             </ul>
         </div>
     )
