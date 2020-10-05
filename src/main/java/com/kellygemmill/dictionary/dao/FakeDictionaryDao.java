@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class FakeDictionaryDao implements DictionaryDao {
 
-    Map<String,Dictionary> dictionaries;
+    private final Map<String,Dictionary> dictionaries;
 
     public FakeDictionaryDao() {
         this.dictionaries = new HashMap<>();
