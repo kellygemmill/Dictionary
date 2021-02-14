@@ -11,7 +11,7 @@ function App() {
 
   const parseWord = () => {
     axios
-        .get(`http://jisho-api-kg.herokuapp.com/api/parse/${query}`)
+        .get(`http://localhost:8080/api/parse/${query}`)
         .then(response => {
           setParsed(response.data)
         })
