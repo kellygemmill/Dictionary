@@ -1,46 +1,67 @@
 package com.kellygemmill.dictionary.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
+@Entity(name = "Dictionary")
+@Table(name = "dictionary")
 public class Dictionary {
 
-    private final String name;
-    private final Map<String, List<DictionaryEntry>> entries;
+    @Id
+    @SequenceGenerator(name = "dictionary_sequence", sequenceName = "dictionary_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dictionary_generator")
+    @Column(name = "id")
+    private Long id;
 
-    public Dictionary(String name,Map<String,List<DictionaryEntry>> entries) {
+    @Column(name = "name", nullable = false, columnDefinition = "TEXT")
+    private java.lang.String name;
+
+    @Column(name = "type", nullable = false, length = 11)
+    @Convert(converter = TypeAttributeConverter.class)
+    private DictionaryType type;
+
+    @OneToMany(mappedBy = "dictionary", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    private List<Entry> entries = new ArrayList<>();
+
+    public Dictionary() {
+
+    }
+
+    public Dictionary(String name, DictionaryType type) {
         this.name = name;
-        this.entries = entries;
+        this.type = type;
     }
 
-    public Dictionary(String name) {
-        this(name, new HashMap<>());
+    public Long getId() {
+        return id;
     }
 
-    public String getName() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public java.lang.String getName() {
         return name;
     }
 
-    public Map<String, List<DictionaryEntry>> getEntries() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public DictionaryType getType() {
+        return type;
+    }
+
+    public void setType(DictionaryType type) {
+        this.type = type;
+    }
+
+    public List<Entry> getEntries() {
         return entries;
     }
 
-    public List<DictionaryEntry> getDefinition(Word word) {
-        List<DictionaryEntry> potentialEntries = entries.get(word.getReading());
-        return potentialEntries
-                .stream()
-                .filter(entry -> entry.getWord().equals(word.getWord()))
-                .collect(Collectors.toList());
-    }
-
-    public void addDefinition(DictionaryEntry dictionaryEntry) {
-        String reading = dictionaryEntry.getReading();
-        if (!entries.containsKey(reading)) {
-            entries.put(reading,new ArrayList<>());
-        }
-        entries.get(reading).add(dictionaryEntry);
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
     }
 }
