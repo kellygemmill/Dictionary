@@ -7,9 +7,9 @@ public class Word {
     private final String word;
     private final String reading;
     private final String partOfSpeech;
-    private Word baseForm;
+    private String baseForm;
 
-    public Word(String word, String reading, String partOfSpeech, Word baseForm) {
+    public Word(String word, String reading, String partOfSpeech, String baseForm) {
         this.word = word;
         this.reading = reading;
         this.partOfSpeech = partOfSpeech;
@@ -17,7 +17,7 @@ public class Word {
     }
 
     public Word(String word, String reading, String partOfSpeech) {
-        this(word,reading,partOfSpeech,null); // make baseForm null if it's not passed
+        this(word,reading,partOfSpeech,word); // make baseForm null if it's not passed
     }
 
     public String getWord() {
@@ -32,11 +32,11 @@ public class Word {
         return partOfSpeech;
     }
 
-    public Optional<Word> getBaseForm() {
-        return Optional.ofNullable(baseForm);
+    public String getBaseForm() {
+        return baseForm;
     }
 
-    public void setBaseForm(Word baseForm) {
+    public void setBaseForm(String baseForm) {
         this.baseForm = baseForm;
     }
 
