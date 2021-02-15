@@ -38,14 +38,16 @@ public class KuromojiParser implements ParserService {
 
     private Word tokenToWord(Token token) {
         String surfaceForm = token.getSurfaceForm();
+        String partOfSpeech = token.getPartOfSpeech();
         String baseForm = token.getBaseForm();
+        String reading = token.getReading();
 
         Word word = new Word(
                 surfaceForm,
-                token.getReading(),
-                token.getPartOfSpeech());
+                reading != null ? reading : surfaceForm,
+                partOfSpeech);
 
-        if (!baseForm.equals(surfaceForm)) {  // Get the base word if necessary
+        if (baseForm != null && !baseForm.equals(surfaceForm)) {  // Get the base word if necessary
             Token baseFormToken = getTokens(baseForm).get(0); // Already base form, so token list size is 1
             word.setBaseForm(tokenToWord(baseFormToken));
         }
