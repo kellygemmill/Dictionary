@@ -3,6 +3,7 @@ package com.kellygemmill.dictionary.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "Dictionary")
 @Table(name = "dictionary")
@@ -64,4 +65,19 @@ public class Dictionary {
 //    public void setEntries(List<Entry> entries) {
 //        this.entries = entries;
 //    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dictionary that = (Dictionary) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, type);
+    }
 }

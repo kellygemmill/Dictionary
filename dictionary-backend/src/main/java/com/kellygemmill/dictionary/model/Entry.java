@@ -1,6 +1,7 @@
 package com.kellygemmill.dictionary.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity(name = "Entry")
 @Table(name = "entry")
@@ -84,5 +85,22 @@ public class Entry {
                 ", definition='" + definition + '\'' +
                 ", sourceDictionary=" + dictionary +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entry entry = (Entry) o;
+        return Objects.equals(id, entry.id) &&
+                Objects.equals(word, entry.word) &&
+                Objects.equals(reading, entry.reading) &&
+                Objects.equals(definition, entry.definition) &&
+                Objects.equals(dictionary, entry.dictionary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, word, reading, definition, dictionary);
     }
 }

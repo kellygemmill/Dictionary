@@ -9,7 +9,8 @@ import java.util.List;
 
 @Repository
 public interface DictionaryRepository extends JpaRepository<Dictionary, Long> {
-    public Dictionary getDictionaryByName(String name);
+    public List<Dictionary> getDictionaryByName(String name);
+    public List<Dictionary> getDictionaryByType(DictionaryType dictionaryType);
 
 //    public List<Dictionary> getDictionaryByType(DictionaryType type);
 }

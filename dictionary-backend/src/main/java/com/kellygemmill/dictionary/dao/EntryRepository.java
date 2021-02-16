@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
-    public List<Entry> getEntryByWord(String word);
+    public List<Entry> findEntryByWord(String word);
+    public List<Entry> getEntryByReading(String word);
 }
