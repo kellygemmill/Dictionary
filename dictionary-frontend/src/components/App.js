@@ -7,13 +7,14 @@ import SearchBar from './SearchBar'
 
 function App() {
   const [query, setQuery] = useState('')
-  const [parsed,setParsed] = useState([])
+  const [result,setResult] = useState([])
 
-  const parseWord = () => {
+  const lookupWord = () => {
     axios
-        .get(`http://localhost:8080/api/parse/${query}`)
+        .get(`http://localhost:8080/api/define/${query}`)
         .then(response => {
-          setParsed(response.data)
+          setResult(response.data)
+          console.log(result)
         })
   }
 
@@ -24,8 +25,8 @@ function App() {
   return (
     <div>
       <SearchBar handleInput={handleSearchQuery} query={query}  />
-      <MyButton id="parse" text="Parse" handleClick={parseWord} type="primary" />
-      <Results parsed={parsed} />
+      <MyButton id="lookup" text="Search" handleClick={lookupWord} type="primary" />
+      <Results result={result} />
       <Footer />
     </div>
   );

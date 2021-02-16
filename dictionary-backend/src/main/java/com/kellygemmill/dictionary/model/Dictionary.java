@@ -21,8 +21,8 @@ public class Dictionary {
     @Convert(converter = TypeAttributeConverter.class)
     private DictionaryType type;
 
-    @OneToMany(mappedBy = "dictionary", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-    private List<Entry> entries = new ArrayList<>();
+//    @OneToMany(mappedBy = "dictionary", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+//    private List<Entry> entries = new ArrayList<>();
 
     public Dictionary() {
 
@@ -57,11 +57,11 @@ public class Dictionary {
         this.type = type;
     }
 
-    public List<Entry> getEntries() {
-        return entries;
-    }
-
-    public void setEntries(List<Entry> entries) {
-        this.entries = entries;
-    }
+//    public List<Entry> getEntries() {
+//        return entries;
+//    }
+//
+//    public void setEntries(List<Entry> entries) {
+//        this.entries = entries;
+//    }
 }

@@ -1,4 +1,4 @@
-package com.kellygemmill.dictionary.service.parser;
+package com.kellygemmill.dictionary.service;
 
 import com.kellygemmill.dictionary.model.Word;
 import org.atilika.kuromoji.Token;

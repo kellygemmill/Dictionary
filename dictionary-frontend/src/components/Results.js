@@ -1,13 +1,13 @@
 import React from 'react'
 import SingleResult from './SingleResult'
 
-const Results = ({parsed}) => {
+const Results = ({result}) => {
     // console.log(parsed)
     // parsed.map((value,idx) => console.log(value))
     return (
         <div>
             {
-                parsed
+                result
                     .map((value,idx) => 
                     <SingleResult key={idx} value={value} />) 
             }
