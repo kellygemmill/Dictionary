@@ -1,9 +1,9 @@
 # Dictionary
 
 # Dictionary-Frontend
-This is the front end of a Japanese dictionary web app written in Javascript using React. The page was styled using React Boostrap. This web app is available online at [http://jisho-kg.herokuapp.com](http://jisho-kg.herokuapp.com). 
+This is the front end of a Japanese dictionary web app written in Javascript using React. The page was styled using React Boostrap. This web app is available online at [https://jisho.kellygemmill.com](https://jisho.kellygemmill.com.com). 
 
-Additionally, the API can be queried directly at [http://jisho-api-kg.herokuapp.com](http://jisho-api-kg.herokuapp.com). See the repository for [Dictionary-Backend](https://github.com/kellygemmill/Dictionary-Backend) for details on the API and backend Java code. 
+Additionally, the API can be queried directly at [https://jisho.kellygemmill.com/api](https://jisho.kellygemmill.com/api). See below for details on the API and backend Java code. 
 
 ## React Components:
 
@@ -39,10 +39,10 @@ This is the backend for a Japanese dictionary app written in Java using Spring B
 ## How to use: 
 
 ### Interactive web app:
-Look up a word or phrase at [http://jisho-kg.herokuapp.com](http://jisho-kg.herokuapp.com). Currently only the parser has been implemented.
+Look up a word or phrase at [https://jisho.kellygemmill.com](https://jisho.kellygemmill.com). Currently only the parser has been implemented.
 
 ### API:
-Query the parser API directly with a get request to [http://jisho-api-kg.herokuapp.com/api/parse/{query}](http://sudoku-api-kg.herokuapp.com/api/parse/{query}). The get request will return a Word object consisting of the queried word, reading, part of speech, and base word (e.g. unconjugated verb).
+Query the parser API directly with a get request to [https://jisho.kellygemmill.com/api/parse/{query}](https://sudoku.kellygemmill.com/api/parse/{query}). The get request will return a Word object consisting of the queried word, reading, part of speech, and base word (e.g. unconjugated verb).
 
 ## Model: 
 The following models are used in the Dictionary backend.
