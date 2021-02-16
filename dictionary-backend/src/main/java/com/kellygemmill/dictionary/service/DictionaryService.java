@@ -18,11 +18,37 @@ public class DictionaryService {
         this.dictionaryRepository = dictionaryRepository;
     }
 
+    public List<Dictionary> getDictionaries(DictionaryType type, String name) {
+        if (type == null && name == null) {
+            return listAllDictionaries();
+        }
+
+        if (name == null) {
+            return listDictionaryByType(type);
+        }
+
+        if (type == null) {
+            return listDictionaryByName(name);
+        }
+
+        return listDictionaryByTypeAndName(type, name);
+
+    }
+
     public List<Dictionary> listAllDictionaries() {
         return dictionaryRepository.findAll();
     }
 
-    public List<Dictionary> listDictionaryByType(DictionaryType dictionaryType) {
-        return dictionaryRepository.getDictionaryByType(dictionaryType);
+    public List<Dictionary> listDictionaryByName(String name) {
+        return dictionaryRepository.getDictionaryByName(name);
     }
+
+    public List<Dictionary> listDictionaryByType(DictionaryType type) {
+        return dictionaryRepository.getDictionaryByType(type);
+    }
+
+    public List<Dictionary> listDictionaryByTypeAndName(DictionaryType type, String name) {
+        return dictionaryRepository.getDictionaryByTypeAndName(type,name);
+    }
+
 }

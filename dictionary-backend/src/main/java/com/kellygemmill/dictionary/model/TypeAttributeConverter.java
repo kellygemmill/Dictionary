@@ -19,6 +19,9 @@ public class TypeAttributeConverter  implements AttributeConverter<DictionaryTyp
             case BILINGUAL:
                 return "BILINGUAL";
 
+            case PITCH:
+                return "PITCH";
+
             default:
                 throw new IllegalArgumentException(attribute + " not supported.");
         }
@@ -36,6 +39,9 @@ public class TypeAttributeConverter  implements AttributeConverter<DictionaryTyp
 
             case "BILINGUAL":
                 return DictionaryType.BILINGUAL;
+
+            case "PITCH":
+                return DictionaryType.PITCH;
 
             default:
                 throw new IllegalArgumentException(dbData + "not supported.");

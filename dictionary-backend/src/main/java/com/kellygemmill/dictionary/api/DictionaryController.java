@@ -26,11 +26,10 @@ public class DictionaryController {
     }
 
     @GetMapping("/dictionaries")
-    List<Dictionary> getDictionaries(@RequestParam(name="type", required = false) DictionaryType type) {
-        if (type == null) {
-            return dictionaryService.listAllDictionaries();
-        }
-        return dictionaryService.listDictionaryByType(type);
+    List<Dictionary> getDictionaries(
+            @RequestParam(name="type", required = false) DictionaryType type,
+            @RequestParam(name="name", required = false) String name) {
+        return dictionaryService.getDictionaries(type, name);
     }
 
     @GetMapping("/parse/{query}")

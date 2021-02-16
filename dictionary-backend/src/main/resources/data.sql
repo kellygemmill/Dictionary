@@ -1,6 +1,7 @@
 INSERT INTO dictionary(id, name, type) VALUES (1, 'Bilingual J-E', 'BILINGUAL');
 INSERT INTO dictionary(id, name, type) VALUES (2, 'Monolingual J-J', 'MONOLINGUAL');
 INSERT INTO dictionary(id, name, type) VALUES (3, '新 Monolingual J-J', 'MONOLINGUAL');
+INSERT INTO dictionary(id, name, type) VALUES (4, 'Pitch Accent 辞典', 'PITCH');
 
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (1, '食べる', 'たべる', 'to eat',1);
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (2, '行く', 'いく', 'to go',1);
@@ -12,5 +13,7 @@ INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (7, '食
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (8, '行く', 'いく','〈（どこカラ）どこ・なにニ（なにデ）―／どこヲ―〉 その場所から、他の場所へ△移動する（進む）。',3);
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (9, 'こんにちは', 'こんにちは', 'hello', 1);
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (10, 'こんにちは', 'こんにちは', '日中，人に会ったり，人を訪問した時の挨拶(アイサツ)の言葉。', 2);
+INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (11, '食べる', 'たべる', '発音図：タベ↓ル [2]', 4);
+INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (12, '行く', 'いく', '発音図：イク [0]', 4);
 
 
