@@ -33,14 +33,14 @@ public class DictionaryController {
         return dictionaryService.getDictionaries(dictionaryType, dictionaryId);
     }
 
-    @GetMapping("/define/{query}")
-    List<Entry> define(
+    @GetMapping("/entries/{query}")
+    List<Entry> getEntries(
             @PathVariable String query,
             @RequestParam(name="deConjugate", defaultValue = "true") boolean deConjugate,
             @RequestParam(name="dictionaryType", required = false) DictionaryType dictionaryType,
             @RequestParam(name="dictionaryId", required = false) Long dictionaryId
     ) {
-        return lookupService.define(query, deConjugate, dictionaryType, dictionaryId);
+        return lookupService.getEntries(query, deConjugate, dictionaryType, dictionaryId);
     }
 
     @GetMapping("/parse/{query}")

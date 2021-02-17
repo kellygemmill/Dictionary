@@ -28,38 +28,35 @@ public class LookupService {
         return parserService.parseInput(query);
     }
 
-    public List<Entry> define(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
-        return parse(query)
-                .stream()
-                .map(word -> deConjugate ? word.getBaseForm() : word.getWord())
-                .map(word -> lookUpWord(word, dictionaryType, dictionaryId))
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
+    public List<Entry> getEntries(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
+        String wordToFind = deConjugate ? parse(query).get(0).getBaseForm() : query; // Assumes only looking up first word in query
+
+        return findWord(wordToFind, dictionaryType, dictionaryId);
     }
 
-    public List<Entry> lookUpWord(String word, DictionaryType dictionaryType, Long dictionaryId) {
+    public List<Entry> findWord(String word, DictionaryType dictionaryType, Long dictionaryId) {
 
         if (dictionaryId != null) {
-            return getEntryByWordAndDictionaryId(word, dictionaryId);
+            return getEntriesByWordAndDictionaryId(word, dictionaryId);
         }
 
         if (dictionaryType != null) {
-            return getEntryByWordAndDictionaryType(word, dictionaryType);
+            return getEntriesByWordAndDictionaryType(word, dictionaryType);
         }
 
-        return getEntryByWord(word);
+        return getEntriesByWord(word);
 
     }
 
-    private List<Entry> getEntryByWord(String word) {
+    private List<Entry> getEntriesByWord(String word) {
         return entryRepository.getEntryByWord(word);
     }
 
-    private List<Entry> getEntryByWordAndDictionaryType(String word, DictionaryType dictionaryType) {
+    private List<Entry> getEntriesByWordAndDictionaryType(String word, DictionaryType dictionaryType) {
         return entryRepository.getEntryByWordAndDictionaryType(word, dictionaryType);
     }
 
-    private List<Entry> getEntryByWordAndDictionaryId(String word, Long dictionaryId) {
+    private List<Entry> getEntriesByWordAndDictionaryId(String word, Long dictionaryId) {
         return entryRepository.getEntryByWordAndDictionaryId(word, dictionaryId);
     }
 
