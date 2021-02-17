@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DictionaryService {
@@ -18,30 +19,23 @@ public class DictionaryService {
         this.dictionaryRepository = dictionaryRepository;
     }
 
-    public List<Dictionary> getDictionaries(DictionaryType dictionaryType, Long dictionaryId) {
-
-        if (dictionaryId != null) {
-            return listDictionaryById(dictionaryId);
-        }
-
-        if (dictionaryType != null) {
-            return listDictionaryByType(dictionaryType);
-        }
-
-        return listAllDictionaries();
-
+    public Optional<Dictionary> getDictionaryById(Long dictionaryId) {
+        return dictionaryRepository.findDictionaryById(dictionaryId);
     }
 
-    private List<Dictionary> listAllDictionaries() {
-        return dictionaryRepository.findAll();
+    public List<Dictionary> getDictionaries(DictionaryType dictionaryType) {
+
+        return dictionaryType == null ?
+                dictionaryRepository.findAll() :
+                dictionaryRepository.findDictionaryByType(dictionaryType);
     }
 
-    private List<Dictionary> listDictionaryById(Long dictionaryId) {
-        return dictionaryRepository.getDictionaryById(dictionaryId);
+    public Dictionary addDictionary(Dictionary dictionary) {
+        return dictionaryRepository.save(dictionary);
     }
 
-    private List<Dictionary> listDictionaryByType(DictionaryType dictionaryType) {
-        return dictionaryRepository.getDictionaryByType(dictionaryType);
+    public void deleteDictionaryById(Long id) {
+        dictionaryRepository.deleteById(id);
     }
 
 }

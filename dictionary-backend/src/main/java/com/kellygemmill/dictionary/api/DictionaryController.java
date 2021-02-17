@@ -2,50 +2,59 @@ package com.kellygemmill.dictionary.api;
 
 import com.kellygemmill.dictionary.model.Dictionary;
 import com.kellygemmill.dictionary.model.DictionaryType;
-import com.kellygemmill.dictionary.model.Entry;
-import com.kellygemmill.dictionary.model.Word;
 import com.kellygemmill.dictionary.service.DictionaryService;
-import com.kellygemmill.dictionary.service.LookupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/")
 @CrossOrigin(origins = "*")
 public class DictionaryController {
 
-    private final LookupService lookupService;
     private final DictionaryService dictionaryService;
 
     @Autowired
-    public DictionaryController(LookupService lookupService, DictionaryService dictionaryService) {
-        this.lookupService = lookupService;
+    public DictionaryController(DictionaryService dictionaryService) {
         this.dictionaryService = dictionaryService;
     }
 
-    @GetMapping("/dictionaries")
-    List<Dictionary> getDictionaries(
-            @RequestParam(name="type", required = false) DictionaryType dictionaryType,
-            @RequestParam(name="name", required = false) Long dictionaryId
-    ) {
-        return dictionaryService.getDictionaries(dictionaryType, dictionaryId);
+    @GetMapping("/dictionary")
+    List<Dictionary> getDictionaries(@RequestParam(name="type", required = false) DictionaryType dictionaryType) {
+        return dictionaryService.getDictionaries(dictionaryType);
     }
 
-    @GetMapping("/entries/{query}")
-    List<Entry> getEntries(
-            @PathVariable String query,
-            @RequestParam(name="deConjugate", defaultValue = "true") boolean deConjugate,
-            @RequestParam(name="dictionaryType", required = false) DictionaryType dictionaryType,
-            @RequestParam(name="dictionaryId", required = false) Long dictionaryId
-    ) {
-        return lookupService.getEntries(query, deConjugate, dictionaryType, dictionaryId);
+    @GetMapping("/dictionary/{id}")
+    ResponseEntity<?> getDictionary(@PathVariable Long id) {
+        Optional<Dictionary> dictionary = dictionaryService.getDictionaryById(id);
+        return dictionary
+                .map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/parse/{query}")
-    List<Word> parse(@PathVariable String query) {
-        return lookupService.parse(query);
+    @PostMapping("/dictionary")
+    ResponseEntity<Dictionary> createDictionary(@Valid @RequestBody Dictionary dictionary) throws URISyntaxException {
+        Dictionary result = dictionaryService.addDictionary(dictionary);
+        return ResponseEntity.created(new URI("/api/dictionary/" + result.getId())).body(result);
+    }
+
+    @PutMapping("/dictionary")
+    ResponseEntity<Dictionary> updateDictionary(@Valid @RequestBody Dictionary dictionary) throws URISyntaxException {
+        Dictionary result = dictionaryService.addDictionary(dictionary);
+        return ResponseEntity.ok().body(result);
+    }
+
+    @DeleteMapping("/dictionary/{id}")
+    ResponseEntity<?> deleteDictionary(@PathVariable Long id) {
+        dictionaryService.deleteDictionaryById(id);
+        return ResponseEntity.ok().build();
     }
 
 }

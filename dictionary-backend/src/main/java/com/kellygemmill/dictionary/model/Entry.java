@@ -3,6 +3,7 @@ package com.kellygemmill.dictionary.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity(name = "Entry")
@@ -16,16 +17,18 @@ public class Entry {
     private Long id;
 
     @Column(name = "word", nullable = false, columnDefinition = "TEXT")
+    @NotNull
     private String word;
 
     @Column(name = "reading", nullable = false, columnDefinition = "TEXT")
+    @NotNull
     private String reading;
 
     @Column(name = "definition", nullable = false, columnDefinition = "TEXT")
+    @NotNull
     private String definition;
 
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "dictionary_id", nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name = "entry_dictionary_fk"))
     private Dictionary dictionary;
 

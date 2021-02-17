@@ -1,8 +1,10 @@
 package com.kellygemmill.dictionary.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,9 +20,11 @@ public class Dictionary {
     private Long id;
 
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
+    @NotNull
     private java.lang.String name;
 
     @Column(name = "type", nullable = false, length = 11)
+    @NotNull
     @Convert(converter = TypeAttributeConverter.class)
     private DictionaryType type;
 

@@ -60,4 +60,11 @@ public class LookupService {
         return entryRepository.getEntryByWordAndDictionaryId(word, dictionaryId);
     }
 
+    public Entry addEntry(Entry entry) {
+        return entryRepository.save(entry);
+    }
+
+    public void deleteEntryById(Long id) {
+        entryRepository.deleteById(id);
+    }
 }
