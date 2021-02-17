@@ -1,16 +1,14 @@
 package com.kellygemmill.dictionary.service;
 
 import com.kellygemmill.dictionary.dao.EntryRepository;
+import com.kellygemmill.dictionary.model.DictionaryType;
 import com.kellygemmill.dictionary.model.Entry;
 import com.kellygemmill.dictionary.model.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,19 +28,39 @@ public class LookupService {
         return parserService.parseInput(query);
     }
 
-    public List<Entry> define(String query) {
+    public List<Entry> define(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
         return parse(query)
                 .stream()
-                .map(this::getEntryByWord)
+                .map(word -> deConjugate ? word.getBaseForm() : word.getWord())
+                .map(word -> lookUpWord(word, dictionaryType, dictionaryId))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
 
-    public List<Entry> getEntryByWord(Word word) {
-        Set<Entry> entries = new HashSet<>();
-        entries.addAll(entryRepository.findEntryByWord(word.getBaseForm()));
-        entries.addAll(entryRepository.getEntryByReading(word.getBaseForm()));
+    public List<Entry> lookUpWord(String word, DictionaryType dictionaryType, Long dictionaryId) {
 
-        return new ArrayList<>(entries);
+        if (dictionaryId != null) {
+            return getEntryByWordAndDictionaryId(word, dictionaryId);
+        }
+
+        if (dictionaryType != null) {
+            return getEntryByWordAndDictionaryType(word, dictionaryType);
+        }
+
+        return getEntryByWord(word);
+
     }
+
+    private List<Entry> getEntryByWord(String word) {
+        return entryRepository.getEntryByWord(word);
+    }
+
+    private List<Entry> getEntryByWordAndDictionaryType(String word, DictionaryType dictionaryType) {
+        return entryRepository.getEntryByWordAndDictionaryType(word, dictionaryType);
+    }
+
+    private List<Entry> getEntryByWordAndDictionaryId(String word, Long dictionaryId) {
+        return entryRepository.getEntryByWordAndDictionaryId(word, dictionaryId);
+    }
+
 }

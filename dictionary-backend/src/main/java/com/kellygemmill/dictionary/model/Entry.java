@@ -1,5 +1,7 @@
 package com.kellygemmill.dictionary.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -23,6 +25,7 @@ public class Entry {
     private String definition;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "dictionary_id", nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name = "entry_dictionary_fk"))
     private Dictionary dictionary;
 

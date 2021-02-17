@@ -18,37 +18,30 @@ public class DictionaryService {
         this.dictionaryRepository = dictionaryRepository;
     }
 
-    public List<Dictionary> getDictionaries(DictionaryType type, String name) {
-        if (type == null && name == null) {
-            return listAllDictionaries();
+    public List<Dictionary> getDictionaries(DictionaryType dictionaryType, Long dictionaryId) {
+
+        if (dictionaryId != null) {
+            return listDictionaryById(dictionaryId);
         }
 
-        if (name == null) {
-            return listDictionaryByType(type);
+        if (dictionaryType != null) {
+            return listDictionaryByType(dictionaryType);
         }
 
-        if (type == null) {
-            return listDictionaryByName(name);
-        }
-
-        return listDictionaryByTypeAndName(type, name);
+        return listAllDictionaries();
 
     }
 
-    public List<Dictionary> listAllDictionaries() {
+    private List<Dictionary> listAllDictionaries() {
         return dictionaryRepository.findAll();
     }
 
-    public List<Dictionary> listDictionaryByName(String name) {
-        return dictionaryRepository.getDictionaryByName(name);
+    private List<Dictionary> listDictionaryById(Long dictionaryId) {
+        return dictionaryRepository.getDictionaryById(dictionaryId);
     }
 
-    public List<Dictionary> listDictionaryByType(DictionaryType type) {
-        return dictionaryRepository.getDictionaryByType(type);
-    }
-
-    public List<Dictionary> listDictionaryByTypeAndName(DictionaryType type, String name) {
-        return dictionaryRepository.getDictionaryByTypeAndName(type,name);
+    private List<Dictionary> listDictionaryByType(DictionaryType dictionaryType) {
+        return dictionaryRepository.getDictionaryByType(dictionaryType);
     }
 
 }

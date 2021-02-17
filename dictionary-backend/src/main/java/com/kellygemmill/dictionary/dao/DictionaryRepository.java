@@ -15,12 +15,9 @@ public interface DictionaryRepository extends JpaRepository<Dictionary, Long> {
     List<Dictionary> getAllDictionaries();
 
     @Query("SELECT d FROM Dictionary d WHERE d.type = ?1")
-    public List<Dictionary> getDictionaryByType(DictionaryType type);
+    public List<Dictionary> getDictionaryByType(DictionaryType dictionaryType);
 
     @Query("SELECT d FROM Dictionary d WHERE d.name = ?1")
-    public List<Dictionary> getDictionaryByName(String name);
-
-    @Query("SELECT d FROM Dictionary d WHERE d.type = ?1 AND d.name = ?2")
-    public List<Dictionary> getDictionaryByTypeAndName(DictionaryType dictionaryType, String name);
+    public List<Dictionary> getDictionaryById(Long dictionaryId);
 
 }

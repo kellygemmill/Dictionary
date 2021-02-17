@@ -1,7 +1,7 @@
 INSERT INTO dictionary(id, name, type) VALUES (1, 'Bilingual J-E', 'BILINGUAL');
 INSERT INTO dictionary(id, name, type) VALUES (2, 'Monolingual J-J', 'MONOLINGUAL');
 INSERT INTO dictionary(id, name, type) VALUES (3, '新 Monolingual J-J', 'MONOLINGUAL');
-INSERT INTO dictionary(id, name, type) VALUES (4, 'Pitch Accent 辞典', 'PITCH');
+INSERT INTO dictionary(id, name, type) VALUES (4, 'Pitch Accent 辞典', 'MONOLINGUAL');
 
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (1, '食べる', 'たべる', 'to eat',1);
 INSERT INTO entry (id, word, reading, definition, dictionary_id) VALUES (2, '行く', 'いく', 'to go',1);

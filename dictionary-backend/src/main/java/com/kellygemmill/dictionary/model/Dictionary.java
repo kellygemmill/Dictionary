@@ -1,5 +1,7 @@
 package com.kellygemmill.dictionary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,9 @@ public class Dictionary {
     @Convert(converter = TypeAttributeConverter.class)
     private DictionaryType type;
 
-//    @OneToMany(mappedBy = "dictionary", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-//    private List<Entry> entries = new ArrayList<>();
+    @OneToMany(mappedBy = "dictionary", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<Entry> entries = new ArrayList<>();
 
     public Dictionary() {
 
@@ -58,13 +61,13 @@ public class Dictionary {
         this.type = type;
     }
 
-//    public List<Entry> getEntries() {
-//        return entries;
-//    }
-//
-//    public void setEntries(List<Entry> entries) {
-//        this.entries = entries;
-//    }
+    public List<Entry> getEntries() {
+        return entries;
+    }
+
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
+    }
 
     @Override
     public boolean equals(Object o) {
