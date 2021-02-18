@@ -6,11 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #dbe2ef;
-  padding: 25px 150px;
+  padding-top: 35px;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 code {
@@ -18,3 +19,19 @@ code {
     monospace;
 }
 
+.search-bar {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 750px;
+  padding: 5px;
+  border-style: solid;
+  border-color: #888;
+}
+
+.dictionary-selection {
+  width: 80%;
+  margin-top: 10px;
+  margin-right: 65%;
+  margin-left: 5%;
+}

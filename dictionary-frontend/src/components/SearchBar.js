@@ -1,13 +1,16 @@
 import React from 'react'
+import { Text } from '../containers/Language'
 
 const SearchBar = ({handleInput,query}) => {
-
+    const placeholder = Text({"textId": "searchDescription"})
+    // const style = {
+    //     height: 'auto',
+    //     margin: '20px 10px auto'
+    // }
+    
     return (
-        <div>
-            <h3>Japanese word to define: </h3>
-            <input onChange={handleInput} value={query} />
-            <p>Note: Currently defined test words: 食べる、行く、犬、本</p>
-        </div>
+        // <input onChange={handleInput} value={query} placeholder={placeholder} style={style} />
+        <input onChange={handleInput} value={query} placeholder={placeholder} className='search-bar' />
     )
 
 }
