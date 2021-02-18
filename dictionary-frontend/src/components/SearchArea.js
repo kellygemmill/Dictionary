@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Results from './Results'
 import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
@@ -11,12 +10,13 @@ import { Text } from '../containers/Language'
 
 const SearchArea = () => {
     const [query, setQuery] = useState('')
-    const [dictionaryType, setDictionaryType] = useState(Text({"textId": "all"}))
+    const [dictionaryType, setDictionaryType] = useState(Text({'textId': 'all'}))
     const [result,setResult] = useState([])
 
     const lookupWord = () => {
+        const apiAddr = 'http://localhost:8080'
         axios
-            .get(`http://localhost:8080/api/entry/${query}`)
+            .get(`${apiAddr}/api/entry/${query}?type=${dictionaryType}`)
             .then(response => {
                 setResult(response.data)
                 console.log(result)
@@ -44,10 +44,11 @@ const SearchArea = () => {
             <div>
                 <InputGroup className='search-bar' size='md'>
                     
-                    <DropdownButton as={InputGroup.Prepend} variant='secondary' id='type-dropdown' title={Text({"textId": dictionaryType})}>
-                        <Dropdown.Item id='all' onClick={handleDictionaryType}>Search All Dictionaries</Dropdown.Item>
-                        <Dropdown.Item id='monolingual' onClick={handleDictionaryType}>Monolingual Only</Dropdown.Item>
-                        <Dropdown.Item id='bilingual' onClick={handleDictionaryType}>Bilingual Only</Dropdown.Item>
+                    <DropdownButton as={InputGroup.Prepend} variant='secondary' id='type-dropdown' title={Text({'textId': dictionaryType})}>
+                        <Dropdown.Item id='all' onClick={handleDictionaryType}><Text textId="allDescription" /></Dropdown.Item>
+                        <Dropdown.Item id='jj' onClick={handleDictionaryType}><Text textId="jjDescription" /></Dropdown.Item>
+                        <Dropdown.Item id='je' onClick={handleDictionaryType}><Text textId="jeDescription" /></Dropdown.Item>
+                        <Dropdown.Item id='ej' onClick={handleDictionaryType}><Text textId="ejDescription" /></Dropdown.Item>
                     </DropdownButton>
                     
                     <FormControl 
