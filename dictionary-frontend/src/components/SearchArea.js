@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, InputGroup, Dropdown, DropdownButton, FormControl } from 'react-bootstrap'
-import Results from './Results'
-import { Text } from '../containers/Language'
+import Results from 'components/Results'
+import { Text } from 'containers/Language'
 
 
 

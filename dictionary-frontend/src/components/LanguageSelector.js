@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { languageOptions } from '../languages'
-import { LanguageContext } from '../containers/Language'
+import { languageOptions } from 'languages'
+import { LanguageContext } from 'containers/Language'
 import { NavDropdown, Dropdown, InputGroup } from 'react-bootstrap'
 
 export default function LanguageSelector() {

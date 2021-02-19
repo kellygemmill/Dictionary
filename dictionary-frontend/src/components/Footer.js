@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-import { Text } from '../containers/Language'
+import { Text } from 'containers/Language'
 
 const style = {
     position: 'static',

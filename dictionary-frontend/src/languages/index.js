@@ -1,5 +1,5 @@
-import en from './en.json'
-import jp from './jp.json'
+import en from 'languages/en.json'
+import jp from 'languages/jp.json'
 
 export const dictionaryList = { en, jp }
 

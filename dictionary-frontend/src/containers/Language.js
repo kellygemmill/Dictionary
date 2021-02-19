@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react'
-import { languageOptions, dictionaryList } from '../languages'
+import { languageOptions, dictionaryList } from 'languages'
 
 // Language context for default language
 export const LanguageContext = createContext({

@@ -1,8 +1,8 @@
 import React from 'react'
-import { LanguageProvider, Text } from '../containers/Language';
-import SearchArea from './SearchArea'
-import Footer from './Footer'
-import NavigationBar from './NavigationBar'
+import { LanguageProvider, Text } from 'containers/Language';
+import SearchArea from 'components/SearchArea'
+import Footer from 'components/Footer'
+import NavigationBar from 'components/NavigationBar'
 
 function App() {
   

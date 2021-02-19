@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
-import LanguageSelector from './LanguageSelector'
-import { Text } from '../containers/Language';
+import LanguageSelector from 'components/LanguageSelector'
+import { Text } from 'containers/Language';
 
 const NavigationBar = () => {
 
