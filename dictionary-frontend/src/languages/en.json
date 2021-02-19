@@ -10,5 +10,9 @@
     "allDescription": "Search All Dictionaries",
     "jjDescription": "Japanese to Japanese Only",
     "jeDescription": "Japanese to English Only",
-    "ejDescription": "English to Japanese Only"
+    "ejDescription": "English to Japanese Only",
+    "kellygemmill": "Kelly Gemmill",
+    "home": "Home",
+    "projects": "Projects",
+    "github": "GitHub"
 }

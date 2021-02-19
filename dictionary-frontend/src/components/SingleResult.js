@@ -1,18 +1,18 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 
 const SingleResult = ({value}) => {
     
     return (
-        <div>
-            <ul>
-                <li>Word: {value.word}</li>
-                <li>Reading: {value.reading}</li>
-                <li>Definition: {value.definition}</li>
-                <li>Dictionary: {value.dictionary.name}</li>
-            </ul>
-        </div>
+        <Card className='single-result'>
+            <Card.Header as='h5'>【{value.word}】 {value.reading}</Card.Header>
+            <Card.Body>
+                <Card.Text>
+                    {value.definition}
+                </Card.Text>
+            </Card.Body>
+        </Card>
     )
-
 }
 
 export default SingleResult

@@ -1,19 +1,26 @@
 import React from 'react'
-import SingleResult from './SingleResult'
+import SingleDictionary from './SingleDictionary'
 
-const Results = ({result}) => {
-    console.log(result)
-    // parsed.map((value,idx) => console.log(value))
+const Results = ({results}) => {
+    
+    const dictionaries = []
+    const map = new Map()
+    for (const result of results) {
+        if (!map.has(result.dictionary.id)) {
+            map.set(result.dictionary.id, true)
+            dictionaries.push(result.dictionary)
+        }
+    }
+
     return (
         <div>
             {
-                result
+                dictionaries
                     .map((value,idx) => 
-                    <SingleResult key={idx} value={value} />) 
+                    <SingleDictionary key={idx} dictionary={value} results={results} />) 
             }
         </div>
     )
-    
 }
 
 export default Results

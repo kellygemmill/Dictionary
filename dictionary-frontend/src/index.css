@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #dbe2ef;
-  padding-top: 35px;
+  padding-top: 0;
 }
 
 h1 {
@@ -18,6 +18,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input:focus {
+  outline:0;
+}
+
+button:focus {
+  outline:0;
+}
+
 
 .search-bar {
   width: 90%;
@@ -35,3 +44,28 @@ code {
   margin-right: 65%;
   margin-left: 5%;
 }
+
+.single-result {
+  margin-top: 0;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 750px;
+  padding: 0;
+}
+
+.single-dictionary {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 750px;
+  padding:0;
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+

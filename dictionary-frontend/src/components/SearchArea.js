@@ -1,25 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Button, InputGroup, Dropdown, DropdownButton, FormControl } from 'react-bootstrap'
 import Results from './Results'
-import Button from 'react-bootstrap/Button'
-import InputGroup from 'react-bootstrap/InputGroup'
-import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import FormControl from 'react-bootstrap/FormControl'
 import { Text } from '../containers/Language'
+
+
 
 const SearchArea = () => {
     const [query, setQuery] = useState('')
-    const [dictionaryType, setDictionaryType] = useState(Text({'textId': 'all'}))
-    const [result,setResult] = useState([])
+    const [dictionaryType, setDictionaryType] = useState('all')
+    const [results,setResults] = useState([])
 
     const lookupWord = () => {
-        const apiAddr = 'http://10.0.2.167:8080'
+        // const apiAddr = 'https://jisho.kellygemmill.com'
+        const apiAddr = 'http://localhost:8080'
         axios
             .get(`${apiAddr}/api/entry/${query}?type=${dictionaryType}`)
             .then(response => {
-                setResult(response.data)
-                console.log(result)
+                setResults(response.data)
             })
     }
 
@@ -29,15 +27,6 @@ const SearchArea = () => {
 
     const handleDictionaryType = (event) => {
         setDictionaryType(event.target.id)
-    }
-
-    const buttonStyle = {
-        marginRight: '2px',
-        marginLeft: '2px',
-        marginTop: '2px',
-        marginBottom: '2px',
-        width: '23%',
-        border: '0px'
     }
 
         return (
@@ -63,7 +52,7 @@ const SearchArea = () => {
 
                 </InputGroup>
 
-                <Results result={result} />
+                <Results results={results} />
             </div>
           )
     }
