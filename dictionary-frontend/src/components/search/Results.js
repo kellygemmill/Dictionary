@@ -1,5 +1,5 @@
 import React from 'react'
-import SingleDictionary from 'components/SingleDictionary'
+import SingleDictionary from 'components/search/SingleDictionary'
 
 const Results = ({results}) => {
     

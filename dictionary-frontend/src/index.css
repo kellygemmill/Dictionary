@@ -19,14 +19,9 @@ code {
     monospace;
 }
 
-input:focus {
-  outline:0;
+.navbar {
+  margin-bottom: 30px;
 }
-
-button:focus {
-  outline:0;
-}
-
 
 .search-bar {
   width: 90%;
@@ -65,7 +60,10 @@ button:focus {
   padding:0;
 }
 
-.navbar {
-  margin-bottom: 30px;
+.gh-button {
+  margin: 5px 5px 10px;
+  width: 150px;
+  background-color: #eee;
 }
+
 

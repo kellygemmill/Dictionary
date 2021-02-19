@@ -1,5 +1,5 @@
 import React from 'react'
-import SingleResult from 'components/SingleResult'
+import SingleResult from 'components/search/SingleResult'
 import { Card } from 'react-bootstrap'
 
 const SingleDictionary = ({dictionary, results}) => {

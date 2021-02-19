@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, InputGroup, Dropdown, DropdownButton, FormControl } from 'react-bootstrap'
-import Results from 'components/Results'
+import Results from 'components/search/Results'
 import { Text } from 'containers/Language'
 
 
