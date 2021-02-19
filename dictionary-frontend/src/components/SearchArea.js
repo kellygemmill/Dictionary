@@ -12,8 +12,8 @@ const SearchArea = () => {
     const [results,setResults] = useState([])
 
     const lookupWord = () => {
-        // const apiAddr = 'https://jisho.kellygemmill.com'
-        const apiAddr = 'http://localhost:8080'
+        const apiAddr = 'https://dictionary.kellygemmill.com'
+        // const apiAddr = 'http://localhost:8080'
         axios
             .get(`${apiAddr}/api/entry/${query}?type=${dictionaryType}`)
             .then(response => {
