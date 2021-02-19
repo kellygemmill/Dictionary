@@ -14,5 +14,7 @@
     "kellygemmill": "ゲミル・ケリー",
     "home": "ホーム",
     "projects": "プロジェクト",
-    "github": "GitHub"
+    "github": "GitHub",
+    "sudoku": "数独ソルバー",
+    "dictionary": "辞書"
 }
