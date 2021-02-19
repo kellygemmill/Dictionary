@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react'
-import { languageOptions, dictionaryList } from 'languages'
+import { languageOptions, dictionaryList } from 'languages/index'
 
 // Language context for default language
 export const LanguageContext = createContext({
@@ -10,7 +10,7 @@ export const LanguageContext = createContext({
 // Language context provided to app
 export function LanguageProvider({ children }) {
     const defaultLanguage = window.localStorage.getItem('rcml-lang')
-    const languageToUse = defaultLanguage
+    const languageToUse = 'en'
     
     const [userLanguage, setUserLanguage] = useState(defaultLanguage || languageToUse)
 
