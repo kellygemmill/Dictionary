@@ -3,6 +3,8 @@ package com.kellygemmill.dictionary.model;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
+import static com.kellygemmill.dictionary.model.DictionaryType.*;
+
 @Converter
 public class TypeAttributeConverter  implements AttributeConverter<DictionaryType, String> {
 
@@ -13,11 +15,17 @@ public class TypeAttributeConverter  implements AttributeConverter<DictionaryTyp
         }
 
         switch (attribute) {
-            case MONOLINGUAL:
-                return "MONOLINGUAL";
+            case JtoJ:
+                return "JtoJ";
 
-            case BILINGUAL:
-                return "BILINGUAL";
+            case JtoE:
+                return "JtoE";
+
+            case EtoJ:
+                return "EtoJ";
+
+            case ALL:
+                return "ALL";
 
             default:
                 throw new IllegalArgumentException(attribute + " not supported.");
@@ -31,12 +39,18 @@ public class TypeAttributeConverter  implements AttributeConverter<DictionaryTyp
         }
 
         switch (dbData) {
-            case "MONOLINGUAL":
-                return DictionaryType.MONOLINGUAL;
+            case "JtoJ":
+                return JtoJ;
 
-            case "BILINGUAL":
-                return DictionaryType.BILINGUAL;
+            case "JtoE":
+                return JtoE;
 
+            case "EtoJ":
+                return EtoJ;
+
+            case "ALL":
+                return ALL;
+                
             default:
                 throw new IllegalArgumentException(dbData + "not supported.");
         }

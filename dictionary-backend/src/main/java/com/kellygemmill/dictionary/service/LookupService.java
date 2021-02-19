@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.kellygemmill.dictionary.model.DictionaryType.*;
+
 @Service
 public class LookupService {
 
@@ -40,7 +42,7 @@ public class LookupService {
             return getEntriesByWordAndDictionaryId(word, dictionaryId);
         }
 
-        if (dictionaryType != null) {
+        if (dictionaryType != null && dictionaryType != ALL) {
             return getEntriesByWordAndDictionaryType(word, dictionaryType);
         }
 
@@ -53,6 +55,9 @@ public class LookupService {
     }
 
     private List<Entry> getEntriesByWordAndDictionaryType(String word, DictionaryType dictionaryType) {
+        if (dictionaryType == EtoJ) {
+            return entryRepository.getEntryByDefinition(word);
+        }
         return entryRepository.getEntryByWordAndDictionaryType(word, dictionaryType);
     }
 

@@ -12,7 +12,7 @@ const SearchArea = () => {
         const apiAddr = 'https://dictionary.kellygemmill.com'
         // const apiAddr = 'http://localhost:8080'
         axios
-            .get(`${apiAddr}/api/entry/${query}?type=${dictionaryType}`)
+            .get(`${apiAddr}/api/entry/${query}?dictionaryType=${dictionaryType}`)
             .then(response => {
                 setResults(response.data)
             })

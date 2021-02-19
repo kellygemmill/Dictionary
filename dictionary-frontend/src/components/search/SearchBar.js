@@ -8,10 +8,10 @@ const SearchBar = ({ handleDictionaryType, handleSearchQuery, lookupWord, dictio
         <InputGroup className='search-bar' size='md'>
                         
             <DropdownButton as={InputGroup.Prepend} variant='secondary' id='type-dropdown' title={Text({'textId': dictionaryType})}>
-                <Dropdown.Item id='all' onClick={handleDictionaryType}><Text textId="allDescription" /></Dropdown.Item>
-                <Dropdown.Item id='jj' onClick={handleDictionaryType}><Text textId="jjDescription" /></Dropdown.Item>
-                <Dropdown.Item id='je' onClick={handleDictionaryType}><Text textId="jeDescription" /></Dropdown.Item>
-                <Dropdown.Item id='ej' onClick={handleDictionaryType}><Text textId="ejDescription" /></Dropdown.Item>
+                <Dropdown.Item id='ALL' onClick={handleDictionaryType}><Text textId="allDescription" /></Dropdown.Item>
+                <Dropdown.Item id='JtoJ' onClick={handleDictionaryType}><Text textId="jjDescription" /></Dropdown.Item>
+                <Dropdown.Item id='JtoE' onClick={handleDictionaryType}><Text textId="jeDescription" /></Dropdown.Item>
+                <Dropdown.Item id='EtoJ' onClick={handleDictionaryType}><Text textId="ejDescription" /></Dropdown.Item>
             </DropdownButton>
             
             <FormControl 

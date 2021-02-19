@@ -1,5 +1,5 @@
 package com.kellygemmill.dictionary.model;
 
 public enum DictionaryType {
-    MONOLINGUAL,BILINGUAL;
+    JtoJ,EtoJ,JtoE,ALL; // Japanese to Japanese, English to Japanese, Japanese to English
 }
