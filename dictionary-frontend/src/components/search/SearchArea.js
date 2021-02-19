@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Button, InputGroup, Dropdown, DropdownButton, FormControl } from 'react-bootstrap'
 import Results from 'components/search/Results'
-import { Text } from 'containers/Language'
-
-
+import SearchBar from 'components/search/SearchBar'
 
 const SearchArea = () => {
     const [query, setQuery] = useState('')
@@ -31,27 +28,12 @@ const SearchArea = () => {
 
         return (
             <div>
-                <InputGroup className='search-bar' size='md'>
-                    
-                    <DropdownButton as={InputGroup.Prepend} variant='secondary' id='type-dropdown' title={Text({'textId': dictionaryType})}>
-                        <Dropdown.Item id='all' onClick={handleDictionaryType}><Text textId="allDescription" /></Dropdown.Item>
-                        <Dropdown.Item id='jj' onClick={handleDictionaryType}><Text textId="jjDescription" /></Dropdown.Item>
-                        <Dropdown.Item id='je' onClick={handleDictionaryType}><Text textId="jeDescription" /></Dropdown.Item>
-                        <Dropdown.Item id='ej' onClick={handleDictionaryType}><Text textId="ejDescription" /></Dropdown.Item>
-                    </DropdownButton>
-                    
-                    <FormControl 
-                        placeholder={Text({"textId": "searchDescription"})} 
-                        onChange={handleSearchQuery}
-                        value={query}/>
-                    <InputGroup.Append>
-                        <Button variant='primary' id='search-button'　onClick={lookupWord}>
-                            <Text textId='searchButton' />
-                        </Button>
-                    </InputGroup.Append> 
-
-                </InputGroup>
-
+                <SearchBar 
+                    handleDictionaryType={handleDictionaryType} 
+                    handleSearchQuery={handleSearchQuery}
+                    lookupWord={lookupWord}
+                    dictionaryType={dictionaryType}
+                    query={query} />
                 <Results results={results} />
             </div>
           )
