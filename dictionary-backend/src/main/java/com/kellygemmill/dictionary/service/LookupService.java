@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,10 @@ public class LookupService {
         return parserService.parseInput(query);
     }
 
+    public List<Entry> getEntries() {
+        return entryRepository.findAll();
+    }
+
     public List<Entry> getEntries(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
         String wordToFind = deConjugate ? parse(query).get(0).getBaseForm() : query; // Assumes only looking up first word in query
 
@@ -37,7 +42,7 @@ public class LookupService {
     }
 
     public List<Entry> findWord(String word, DictionaryType dictionaryType, Long dictionaryId) {
-
+        System.out.println("word: " + word + " type " + dictionaryType + " id " + dictionaryId);
         if (dictionaryId != null) {
             return getEntriesByWordAndDictionaryId(word, dictionaryId);
         }
@@ -65,8 +70,8 @@ public class LookupService {
         return entryRepository.getEntryByWordAndDictionaryId(word, dictionaryId);
     }
 
-    public Entry addEntry(Entry entry) {
-        return entryRepository.save(entry);
+    public List<Entry> addEntry(List<Entry> entries) {
+        return entryRepository.saveAll(entries);
     }
 
     public void deleteEntryById(Long id) {

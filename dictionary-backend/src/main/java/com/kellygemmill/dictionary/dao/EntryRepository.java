@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
 
-    @Query("SELECT e FROM Entry e WHERE e.word = ?1 OR e.reading = ?1 OR e.definition LIKE %?1%")
+    @Query("SELECT e FROM Entry e WHERE e.word = ?1 OR e.reading = ?1")
     public List<Entry> getEntryByWord(String word);
 
     @Query("SELECT e FROM Entry e WHERE (e.word = ?1 OR e.reading = ?1) AND e.dictionary.type = ?2")

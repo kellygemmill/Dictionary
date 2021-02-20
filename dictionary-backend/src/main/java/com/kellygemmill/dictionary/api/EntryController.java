@@ -30,6 +30,11 @@ public class EntryController {
         return lookupService.parse(query);
     }
 
+    @GetMapping("/entry")
+    List<Entry> getEntries() {
+        return lookupService.getEntries();
+    }
+
     @GetMapping("/entry/{query}")
     List<Entry> getEntries(
             @PathVariable String query,
@@ -41,15 +46,15 @@ public class EntryController {
     }
 
     @PostMapping("/entry")
-    ResponseEntity<Entry> createEntry(@Valid @RequestBody Entry entry) throws URISyntaxException {
-        Entry result = lookupService.addEntry(entry);
-        return ResponseEntity.created(new URI("/api/entry/" + result.getId())).body(result);
+    ResponseEntity<?> createEntry(@Valid @RequestBody List<Entry> entries) throws URISyntaxException {
+        List<Entry> result = lookupService.addEntry(entries);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/entry")
-    ResponseEntity<Entry> updateEntry(@Valid @RequestBody Entry entry) throws URISyntaxException {
-        Entry result = lookupService.addEntry(entry);
-        return ResponseEntity.ok().body(result);
+    ResponseEntity<?> updateEntry(@Valid @RequestBody List<Entry> entries) throws URISyntaxException {
+        List<Entry> result = lookupService.addEntry(entries);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/entry/{id}")

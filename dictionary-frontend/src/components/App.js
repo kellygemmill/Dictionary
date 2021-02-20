@@ -9,7 +9,7 @@ const App = () => {
     return (
         <LanguageProvider>
             <NavigationBar className='navigation-bar' />
-            <h1><Text textId='pageTitle' /></h1>
+            <h1><Text textId='dictionary' /></h1>
             <SearchArea />
             <Footer />
         </LanguageProvider>
