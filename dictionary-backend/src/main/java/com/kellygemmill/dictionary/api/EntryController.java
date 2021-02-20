@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -36,29 +35,35 @@ public class EntryController {
     }
 
     @GetMapping("/entry/{query}")
-    List<Entry> getEntries(
+    List<Entry> getEntriesByQuery(
             @PathVariable String query,
             @RequestParam(name="deConjugate", defaultValue = "true") boolean deConjugate,
             @RequestParam(name="dictionaryType", required = false) DictionaryType dictionaryType,
             @RequestParam(name="dictionaryId", required = false) Long dictionaryId
     ) {
-        return lookupService.getEntries(query, deConjugate, dictionaryType, dictionaryId);
+        return lookupService.getEntriesByQuery(query, deConjugate, dictionaryType, dictionaryId);
     }
 
     @PostMapping("/entry")
     ResponseEntity<?> createEntry(@Valid @RequestBody List<Entry> entries) throws URISyntaxException {
         List<Entry> result = lookupService.addEntry(entries);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(result);
     }
 
     @PutMapping("/entry")
     ResponseEntity<?> updateEntry(@Valid @RequestBody List<Entry> entries) throws URISyntaxException {
         List<Entry> result = lookupService.addEntry(entries);
+        return ResponseEntity.ok().body(result);
+    }
+
+    @DeleteMapping("/entry")
+    ResponseEntity<?> deleteAll() {
+        lookupService.deleteEntries();
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/entry/{id}")
-    ResponseEntity<?> deleteEntry(@PathVariable Long id) {
+    ResponseEntity<?> deleteEntryById(@PathVariable Long id) {
         lookupService.deleteEntryById(id);
         return ResponseEntity.ok().build();
     }

@@ -35,14 +35,25 @@ public class LookupService {
         return entryRepository.findAll();
     }
 
-    public List<Entry> getEntries(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
+    public List<Entry> getEntriesByQuery(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
         String wordToFind = deConjugate ? parse(query).get(0).getBaseForm() : query; // Assumes only looking up first word in query
 
         return findWord(wordToFind, dictionaryType, dictionaryId);
     }
 
-    public List<Entry> findWord(String word, DictionaryType dictionaryType, Long dictionaryId) {
-        System.out.println("word: " + word + " type " + dictionaryType + " id " + dictionaryId);
+    public List<Entry> addEntry(List<Entry> entries) {
+        return entryRepository.saveAll(entries);
+    }
+
+    public void deleteEntries() {
+        entryRepository.deleteAll();
+    }
+
+    public void deleteEntryById(Long id) {
+        entryRepository.deleteById(id);
+    }
+
+    private List<Entry> findWord(String word, DictionaryType dictionaryType, Long dictionaryId) {
         if (dictionaryId != null) {
             return getEntriesByWordAndDictionaryId(word, dictionaryId);
         }
@@ -70,11 +81,4 @@ public class LookupService {
         return entryRepository.getEntryByWordAndDictionaryId(word, dictionaryId);
     }
 
-    public List<Entry> addEntry(List<Entry> entries) {
-        return entryRepository.saveAll(entries);
-    }
-
-    public void deleteEntryById(Long id) {
-        entryRepository.deleteById(id);
-    }
 }
