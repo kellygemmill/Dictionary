@@ -4,16 +4,19 @@ import requests
 
 
 def load_dictionary():
-    dictionary_folder = r'Dictionaries/jmdict_english'
+    dictionary_folder = r'Dictionaries'
+    dictionaries_to_add = ['']
     info_file_name = 'index.json'
-    with open(f'{dictionary_folder}/{info_file_name}', encoding='utf-8') as file:
-        info = json.load(file)
-        dictionary_data = {
-            "name": info["title"],
-            "type": info["type"]
-        }
+    for dictionary_to_add in dictionaries_to_add:
+        dictionary_path = f'{dictionary_folder}/{dictionary_to_add}'
+        with open(f'{dictionary_path}/{info_file_name}', encoding='utf-8') as file:
+            info = json.load(file)
+            dictionary_data = {
+                "name": info["name"],
+                "type": info["type"]
+            }
 
-    post_dictionary_data(dictionary_folder, dictionary_data)
+        post_dictionary_data(dictionary_path, dictionary_data)
 
 
 def post_dictionary_data(folder, dictionary_data):
@@ -31,7 +34,7 @@ def post_dictionary_data(folder, dictionary_data):
         with open(file_name, encoding='utf-8') as file:
             data = json.load(file)
             words_to_add = create_words(data, dictionary)
-            x = requests.post(f'{url}/entry', json=words_to_add)
+            requests.post(f'{url}/entry', json=words_to_add)
 
 
 def create_words(data, dictionary):
