@@ -26,6 +26,11 @@ public class DictionaryController {
         this.dictionaryService = dictionaryService;
     }
 
+    @GetMapping("/")
+    ResponseEntity<?> pingApi() {
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/dictionary")
     List<Dictionary> getDictionaries(@RequestParam(name="type", required = false) DictionaryType dictionaryType) {
         return dictionaryService.getDictionaries(dictionaryType);
