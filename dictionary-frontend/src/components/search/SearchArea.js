@@ -12,8 +12,7 @@ const SearchArea = () => {
         const apiAddr = 'https://dictionary.kellygemmill.com'
         // const apiAddr = 'http://localhost:8080'
         
-        const dictQuery = dictionaryType === 'ALL' ? '' : `?dictionaryType=${dictionaryType}`
-        const apiQuery = `${apiAddr}/api/entry/${query}${dictQuery}`
+        const apiQuery = `${apiAddr}/api/entry/${query}`
         
         axios
             .get(apiQuery)
@@ -45,7 +44,7 @@ const SearchArea = () => {
                     lookupWord={lookupWord}
                     dictionaryType={dictionaryType}
                     query={query} />
-                <Results results={results} />
+                <Results results={results} dictionaryType={dictionaryType} />
             </div>
           )
     }
