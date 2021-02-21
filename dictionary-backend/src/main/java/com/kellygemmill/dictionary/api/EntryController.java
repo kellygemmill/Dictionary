@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class EntryController {
     @PostMapping("/entry")
     ResponseEntity<?> createEntry(@Valid @RequestBody List<Entry> entries) throws URISyntaxException {
         List<Entry> result = lookupService.addEntry(entries);
-        return ResponseEntity.ok().body(result);
+        return ResponseEntity.created(new URI("/api/entry/")).body(result);
     }
 
     @PutMapping("/entry")

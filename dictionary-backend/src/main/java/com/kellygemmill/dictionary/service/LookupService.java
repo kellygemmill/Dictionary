@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.kellygemmill.dictionary.model.DictionaryType.*;
 
@@ -67,18 +65,18 @@ public class LookupService {
     }
 
     private List<Entry> getEntriesByWord(String word) {
-        return entryRepository.getEntryByWord(word);
+        return entryRepository.findByWord(word);
     }
 
     private List<Entry> getEntriesByWordAndDictionaryType(String word, DictionaryType dictionaryType) {
         if (dictionaryType == EtoJ) {
-            return entryRepository.getEntryByDefinition(word);
+            return entryRepository.findByDefinition(" " + word + " ");
         }
-        return entryRepository.getEntryByWordAndDictionaryType(word, dictionaryType);
+        return entryRepository.findByWordAndDictionaryType(word, dictionaryType);
     }
 
     private List<Entry> getEntriesByWordAndDictionaryId(String word, Long dictionaryId) {
-        return entryRepository.getEntryByWordAndDictionaryId(word, dictionaryId);
+        return entryRepository.findByWordAndDictionaryId(word, dictionaryId);
     }
 
 }

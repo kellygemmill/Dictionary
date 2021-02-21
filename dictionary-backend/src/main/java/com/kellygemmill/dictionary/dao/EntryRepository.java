@@ -12,14 +12,14 @@ import java.util.List;
 public interface EntryRepository extends JpaRepository<Entry, Long> {
 
     @Query("SELECT e FROM Entry e WHERE e.word = ?1 OR e.reading = ?1")
-    public List<Entry> getEntryByWord(String word);
+    public List<Entry> findByWord(String word);
 
     @Query("SELECT e FROM Entry e WHERE (e.word = ?1 OR e.reading = ?1) AND e.dictionary.type = ?2")
-    public List<Entry> getEntryByWordAndDictionaryType(String word, DictionaryType type);
+    public List<Entry> findByWordAndDictionaryType(String word, DictionaryType type);
 
     @Query("SELECT e FROM Entry e WHERE (e.word = ?1 OR e.reading = ?1) AND e.dictionary.id = ?2")
-    public List<Entry> getEntryByWordAndDictionaryId(String word, Long dictionaryId);
+    public List<Entry> findByWordAndDictionaryId(String word, Long dictionaryId);
 
     @Query("SELECT e FROM Entry e WHERE e.definition LIKE %?1%")
-    public List<Entry> getEntryByDefinition(String word);
+    public List<Entry> findByDefinition(String word);
 }

@@ -12,13 +12,7 @@ import java.util.Optional;
 @Repository
 public interface DictionaryRepository extends JpaRepository<Dictionary, Long> {
 
-    @Query("SELECT d FROM Dictionary d")
-    List<Dictionary> findAllDictionaries();
-
     @Query("SELECT d FROM Dictionary d WHERE d.type = ?1")
-    public List<Dictionary> findDictionaryByType(DictionaryType dictionaryType);
-
-    @Query("SELECT d FROM Dictionary d WHERE d.name = ?1")
-    public Optional<Dictionary> findDictionaryById(Long dictionaryId);
+    public List<Dictionary> findByType(DictionaryType dictionaryType);
 
 }

@@ -20,14 +20,20 @@ public class DictionaryService {
     }
 
     public Optional<Dictionary> getDictionaryById(Long dictionaryId) {
-        return dictionaryRepository.findDictionaryById(dictionaryId);
+//        return dictionaryRepository.findDictionaryById(dictionaryId);
+        return dictionaryRepository.findById(dictionaryId);
     }
 
     public List<Dictionary> getDictionaries(DictionaryType dictionaryType) {
 
+//        return dictionaryType == null ?
+//                dictionaryRepository.findAll() :
+//                dictionaryRepository.findDictionaryByType(dictionaryType);
+
         return dictionaryType == null ?
                 dictionaryRepository.findAll() :
-                dictionaryRepository.findDictionaryByType(dictionaryType);
+                dictionaryRepository.findByType(dictionaryType);
+
     }
 
     public Dictionary addDictionary(Dictionary dictionary) {
