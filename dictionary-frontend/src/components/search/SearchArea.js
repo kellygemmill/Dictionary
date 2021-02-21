@@ -26,6 +26,12 @@ const SearchArea = () => {
         setQuery(event.target.value)
     }
 
+    const handleKeyPress = (target) => {
+        if (target.charCode === 13) {
+            lookupWord();
+        }
+    }
+
     const handleDictionaryType = (event) => {
         setDictionaryType(event.target.id)
     }
@@ -35,6 +41,7 @@ const SearchArea = () => {
                 <SearchBar 
                     handleDictionaryType={handleDictionaryType} 
                     handleSearchQuery={handleSearchQuery}
+                    handleKeyPress={handleKeyPress}
                     lookupWord={lookupWord}
                     dictionaryType={dictionaryType}
                     query={query} />

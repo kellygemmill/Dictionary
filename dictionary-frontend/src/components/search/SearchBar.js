@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, InputGroup, Dropdown, DropdownButton, FormControl } from 'react-bootstrap'
 import { Text } from 'containers/Language'
 
-const SearchBar = ({ handleDictionaryType, handleSearchQuery, lookupWord, dictionaryType, query }) => {
+const SearchBar = ({ handleDictionaryType, handleSearchQuery, handleKeyPress, lookupWord, dictionaryType, query }) => {
 
     return(
         <InputGroup className='search-bar' size='md'>
@@ -17,7 +17,9 @@ const SearchBar = ({ handleDictionaryType, handleSearchQuery, lookupWord, dictio
             <FormControl 
                 placeholder={Text({"textId": "searchDescription"})} 
                 onChange={handleSearchQuery}
-                value={query}/>
+                value={query}
+                onKeyPress={handleKeyPress}
+                />
             <InputGroup.Append>
                 <Button variant='primary' id='search-button'　onClick={lookupWord}>
                     <Text textId='searchButton' />
