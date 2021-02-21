@@ -13,14 +13,13 @@ import java.util.List;
 import static com.kellygemmill.dictionary.model.DictionaryType.*;
 
 @Service
-public class LookupService {
+public class EntryService {
 
     private final ParserService parserService;
     private final EntryRepository entryRepository;
 
     @Autowired
-    public LookupService(@Qualifier("kuromoji") ParserService parserService,
-                         EntryRepository entryRepository) {
+    public EntryService(@Qualifier("kuromoji") ParserService parserService, EntryRepository entryRepository) {
         this.parserService = parserService;
         this.entryRepository = entryRepository;
     }
@@ -34,8 +33,13 @@ public class LookupService {
     }
 
     public List<Entry> getEntriesByQuery(String query, boolean deConjugate, DictionaryType dictionaryType, Long dictionaryId) {
-        String wordToFind = deConjugate ? parse(query).get(0).getBaseForm() : query; // Assumes only looking up first word in query
-
+        Word parsedQuery = parse(query).get(0);
+        String wordToFind;
+        if (deConjugate && parsedQuery.getPartOfSpeech().contains("動詞")) { // if query word part of speech is "verb"
+            wordToFind = parsedQuery.getBaseForm();
+        } else {
+            wordToFind = query;
+        }
         return findWord(wordToFind, dictionaryType, dictionaryId);
     }
 
@@ -61,7 +65,6 @@ public class LookupService {
         }
 
         return getEntriesByWord(word);
-
     }
 
     private List<Entry> getEntriesByWord(String word) {
@@ -70,7 +73,7 @@ public class LookupService {
 
     private List<Entry> getEntriesByWordAndDictionaryType(String word, DictionaryType dictionaryType) {
         if (dictionaryType == EtoJ) {
-            return entryRepository.findByDefinition(" " + word + " ");
+            return entryRepository.findByDefinition(word);
         }
         return entryRepository.findByWordAndDictionaryType(word, dictionaryType);
     }
