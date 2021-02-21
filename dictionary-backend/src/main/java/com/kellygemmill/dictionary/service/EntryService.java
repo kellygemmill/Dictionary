@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.kellygemmill.dictionary.model.DictionaryType.*;
 
@@ -45,6 +46,18 @@ public class EntryService {
 
     public List<Entry> addEntry(List<Entry> entries) {
         return entryRepository.saveAll(entries);
+    }
+
+    public Optional<Entry> updateEntry(Entry newEntry) {
+        return entryRepository
+                .findById(newEntry.getId())
+                .map(entry -> {
+                    entry.setWord(newEntry.getWord());
+                    entry.setReading(newEntry.getReading());
+                    entry.setDefinition(newEntry.getDefinition());
+                    entry.setDictionary(newEntry.getDictionary());
+                    return entryRepository.save(entry);
+                });
     }
 
     public void deleteEntries() {

@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class DictionaryController {
 
     private final DictionaryService dictionaryService;
@@ -52,8 +52,10 @@ public class DictionaryController {
 
     @PutMapping("/dictionary")
     ResponseEntity<Dictionary> updateDictionary(@Valid @RequestBody Dictionary dictionary) {
-        Dictionary result = dictionaryService.updateDictionary(dictionary);
-        return ResponseEntity.ok().body(result);
+        Optional<Dictionary> result = dictionaryService.updateDictionary(dictionary);
+        return result
+                .map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/dictionary/{id}")

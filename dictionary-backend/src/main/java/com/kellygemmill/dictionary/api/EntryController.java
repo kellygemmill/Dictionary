@@ -12,10 +12,11 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class EntryController {
 
     private final EntryService entryService;
@@ -52,8 +53,8 @@ public class EntryController {
     }
 
     @PutMapping("/entry")
-    ResponseEntity<?> updateEntry(@Valid @RequestBody List<Entry> entries) throws URISyntaxException {
-        List<Entry> result = entryService.addEntry(entries);
+    ResponseEntity<?> updateEntry(@Valid @RequestBody Entry entry) throws URISyntaxException {
+        Optional<Entry> result = entryService.updateEntry(entry);
         return ResponseEntity.ok().body(result);
     }
 

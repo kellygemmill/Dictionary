@@ -21,35 +21,28 @@ public class DictionaryService {
     }
 
     public Optional<Dictionary> getDictionaryById(Long dictionaryId) {
-//        return dictionaryRepository.findDictionaryById(dictionaryId);
         return dictionaryRepository.findById(dictionaryId);
     }
 
     public List<Dictionary> getDictionaries(DictionaryType dictionaryType) {
 
-//        return dictionaryType == null ?
-//                dictionaryRepository.findAll() :
-//                dictionaryRepository.findDictionaryByType(dictionaryType);
-
         return dictionaryType == null ?
                 dictionaryRepository.findAll() :
                 dictionaryRepository.findByType(dictionaryType);
-
     }
 
     public Dictionary addDictionary(Dictionary dictionary) {
         return dictionaryRepository.save(dictionary);
     }
 
-    public Dictionary updateDictionary(Dictionary newDictionary) {
+    public Optional<Dictionary> updateDictionary(Dictionary newDictionary) {
         return dictionaryRepository
                 .findById(newDictionary.getId())
                 .map(dictionary -> {
                     dictionary.setName(newDictionary.getName());
                     dictionary.setType(newDictionary.getType());
                     return dictionaryRepository.save(dictionary);
-                })
-                .orElseThrow(EntityNotFoundException::new);
+                });
     }
 
     public void deleteDictionaryById(Long id) {
