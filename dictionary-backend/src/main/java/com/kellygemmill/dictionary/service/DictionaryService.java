@@ -6,6 +6,7 @@ import com.kellygemmill.dictionary.model.DictionaryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,17 @@ public class DictionaryService {
 
     public Dictionary addDictionary(Dictionary dictionary) {
         return dictionaryRepository.save(dictionary);
+    }
+
+    public Dictionary updateDictionary(Dictionary newDictionary) {
+        return dictionaryRepository
+                .findById(newDictionary.getId())
+                .map(dictionary -> {
+                    dictionary.setName(newDictionary.getName());
+                    dictionary.setType(newDictionary.getType());
+                    return dictionaryRepository.save(dictionary);
+                })
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     public void deleteDictionaryById(Long id) {

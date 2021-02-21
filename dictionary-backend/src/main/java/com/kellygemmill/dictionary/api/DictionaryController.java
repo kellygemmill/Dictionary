@@ -46,8 +46,8 @@ public class DictionaryController {
     }
 
     @PutMapping("/dictionary")
-    ResponseEntity<Dictionary> updateDictionary(@Valid @RequestBody Dictionary dictionary) throws URISyntaxException {
-        Dictionary result = dictionaryService.addDictionary(dictionary);
+    ResponseEntity<Dictionary> updateDictionary(@Valid @RequestBody Dictionary dictionary) {
+        Dictionary result = dictionaryService.updateDictionary(dictionary);
         return ResponseEntity.ok().body(result);
     }
 
