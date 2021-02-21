@@ -10,7 +10,6 @@ const SearchArea = () => {
 
     const lookupWord = () => {
         const apiAddr = 'https://dictionary.kellygemmill.com'
-        // const apiAddr = 'http://localhost:8080'
         
         const apiQuery = `${apiAddr}/api/entry/${query}`
         
@@ -26,7 +25,7 @@ const SearchArea = () => {
     }
 
     const handleKeyPress = (target) => {
-        if (target.charCode === 13) {
+        if (target.charCode === 13) { // charCode 13 is the enter key
             lookupWord();
         }
     }

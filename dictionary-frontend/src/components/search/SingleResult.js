@@ -6,11 +6,12 @@ const SingleResult = ({value}) => {
     return (
         <Card className='single-result'>
             <Card.Header as='h5'>【{value.word}】 {value.reading}</Card.Header>
-            <Card.Body>
-                <Card.Text>
-                    {value.definition}
-                </Card.Text>
-            </Card.Body>
+            <Card.Body>{
+                value.definition.split("\n")
+                    .map( (line,idx) => 
+                        <Card.Text key={idx}>{line}</Card.Text>
+                    )
+            }</Card.Body>
         </Card>
     )
 }
