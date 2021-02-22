@@ -1,7 +1,7 @@
 # Dictionary
 
 # Dictionary-Frontend
-This is the front end of a Japanese dictionary web app written in Javascript using React. The page was styled using React Boostrap. This web app is available online at [https://dictionary.kellygemmill.com](https://dictionary.kellygemmill.com.com). 
+This is the front end of a Japanese dictionary web app written in Javascript using React. The page was styled using React Boostrap. This web app is available online at [https://dictionary.kellygemmill.com](https://dictionary.kellygemmill.com). 
 
 Additionally, the API can be queried directly at [https://dictionary.kellygemmill.com/api](https://dictionary.kellygemmill.com/api). See below for details on the API and backend Java code. 
 
