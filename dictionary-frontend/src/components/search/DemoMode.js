@@ -25,7 +25,7 @@ const Directions = ({setQuery, lookupWord}) => {
                             <li>Select the desired dictionary set with the dropdown menu to the left of the search box.</li>
                             <li>Change the interface language with the dropdown menu in the upper right corner.</li>
                         </ul>
-                        <Button variant="outline-light" onClick={generateSearchTerm}>Generate Random Search Term</Button>
+                        <Button className="sample-search-button" variant="outline-light" onClick={generateSearchTerm}>Generate Random Search Term</Button>
                         {sampleSearch ? <Button className="sample-search-button" variant="outline-light" onClick={lookupWord}>Search</Button> : <br></br>}
                     </Card.Body>
                 </Accordion.Collapse>

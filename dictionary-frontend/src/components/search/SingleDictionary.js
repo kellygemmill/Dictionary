@@ -1,21 +1,23 @@
 import React from 'react'
-import SingleResult from 'components/search/SingleResult'
-import { Card } from 'react-bootstrap'
+import SingleDictionaryResults from 'components/search/SingleDictionaryResults'
+import { Card, Accordion } from 'react-bootstrap'
 
 const SingleDictionary = ({dictionary, results}) => {
 
     return (
-        <div>
-            <Card className='single-dictionary' bg='dark' text='white'>
-                <Card.Header as = 'h5'>{dictionary.name}</Card.Header>
-            </Card>
-                    {
-                    results
-                        .filter((result) => result.dictionary.id === dictionary.id)
-                        .map((value,idx) => 
-                        <SingleResult key={idx} value={value} />)
-                    }
-        </div>
+        <Accordion className="directions" defaultActiveKey="0">
+            <Card bg='dark' text='white'>
+                <Accordion.Toggle as={Card.Header} className = "directions-title" eventKey="0">
+                    <h5>{dictionary.name}</h5>
+                </Accordion.Toggle>
+                </Card>
+                <Accordion.Collapse eventKey="0">
+                <Card className="single-dictionary">
+                    <SingleDictionaryResults dictionary={dictionary} results={results} />
+                </Card>
+                </Accordion.Collapse>
+            
+        </Accordion>
     )
 }
 

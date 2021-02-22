@@ -5,7 +5,7 @@ const SingleResult = ({value}) => {
     
     return (
         <Card className='single-result'>
-            <Card.Header as='h5'>【{value.word}】 {value.reading}</Card.Header>
+            <Card.Header as='h5' text='black'>【{value.word}】 {value.reading}</Card.Header>
             <Card.Body>{
                 value.definition.split("\n")
                     .map( (line,idx) => 

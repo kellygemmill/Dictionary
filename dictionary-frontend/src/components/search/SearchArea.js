@@ -10,12 +10,11 @@ const SearchArea = () => {
     const [results,setResults] = useState([])
     
     const lookupWord = () => {
-        console.log('Looking up')
-        console.log('query = ' + query)
         if (query === "") {
             return
         }
         const apiAddr = 'https://dictionary.kellygemmill.com'
+        // const apiAddr = 'http://localhost:8080'
         
         const apiQuery = `${apiAddr}/api/entry/${query}`
         
