@@ -1,6 +1,7 @@
 {
     "pageTitle": "Dictionary",
-    "translationDescription": "Japanese ⇨ Japanese  |  Japanese ⇨ English",
+    "jArrowJ": "Japanese ⇨ Japanese",
+    "jArrowE": "Japanese ⇨ English",
     "searchDescription": "Enter Japanese search term",
     "searchButton": "Search",
     "viewOnGitHub": "View on GitHub",

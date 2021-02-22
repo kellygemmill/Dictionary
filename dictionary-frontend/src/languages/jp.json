@@ -1,6 +1,7 @@
 {
     "pageTitle": "辞書",
-    "translationDescription": "日本語　⇨　日本語　｜　日本語　⇨　英語",
+    "jArrowJ": "日本語　⇨　日本語",
+    "jArrowE": "日本語　⇨　英語",
     "searchDescription": "調べたい言葉を入力",
     "searchButton": "検索",
     "viewOnGitHub": "GitHubで見る",

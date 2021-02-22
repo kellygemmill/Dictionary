@@ -10,7 +10,10 @@ const App = () => {
         <LanguageProvider>
             <NavigationBar className='navigation-bar' />
             <h1><Text textId='dictionary' /></h1>
-            <h3><Text textId='translationDescription' /></h3>
+            <div className='arrow-section'>
+                <h3><Text textId='jArrowE' /></h3>
+                <h3><Text textId='jArrowJ' /></h3>
+            </div>
             <SearchArea />
             <Footer />
         </LanguageProvider>
