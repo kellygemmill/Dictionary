@@ -15,7 +15,7 @@ const SearchArea = () => {
         if (query === "") {
             return
         }
-        const apiAddr = 'http://localhost:8080' //'https://dictionary.kellygemmill.com'
+        const apiAddr = 'https://dictionary.kellygemmill.com'
         
         const apiQuery = `${apiAddr}/api/entry/${query}`
         
