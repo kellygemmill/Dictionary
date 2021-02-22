@@ -2,13 +2,18 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Results from 'components/search/Results'
 import SearchBar from 'components/search/SearchBar'
+import DemoMode from 'components/search/DemoMode'
 
 const SearchArea = () => {
     const [query, setQuery] = useState('')
     const [dictionaryType, setDictionaryType] = useState('ALL')
     const [results,setResults] = useState([])
-
+    
     const lookupWord = () => {
+        if (query === "") {
+            console.log('breaking')
+            return
+        }
         const apiAddr = 'https://dictionary.kellygemmill.com'
         
         const apiQuery = `${apiAddr}/api/entry/${query}`
@@ -34,18 +39,19 @@ const SearchArea = () => {
         setDictionaryType(event.target.id)
     }
 
-        return (
-            <div>
-                <SearchBar 
-                    handleDictionaryType={handleDictionaryType} 
-                    handleSearchQuery={handleSearchQuery}
-                    handleKeyPress={handleKeyPress}
-                    lookupWord={lookupWord}
-                    dictionaryType={dictionaryType}
-                    query={query} />
-                <Results results={results} dictionaryType={dictionaryType} />
-            </div>
-          )
+    return (
+        <div>
+            <SearchBar 
+                handleDictionaryType={handleDictionaryType} 
+                handleSearchQuery={handleSearchQuery}
+                handleKeyPress={handleKeyPress}
+                lookupWord={lookupWord}
+                dictionaryType={dictionaryType}
+                query={query} />
+            <DemoMode setQuery={setQuery} />
+            <Results results={results} dictionaryType={dictionaryType} />
+        </div>
+        )
     }
 
 export default SearchArea

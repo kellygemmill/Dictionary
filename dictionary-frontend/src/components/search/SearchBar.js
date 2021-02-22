@@ -11,7 +11,6 @@ const SearchBar = ({ handleDictionaryType, handleSearchQuery, handleKeyPress, lo
                 <Dropdown.Item id='ALL' onClick={handleDictionaryType}><Text textId="allDescription" /></Dropdown.Item>
                 <Dropdown.Item id='JtoJ' onClick={handleDictionaryType}><Text textId="jjDescription" /></Dropdown.Item>
                 <Dropdown.Item id='JtoE' onClick={handleDictionaryType}><Text textId="jeDescription" /></Dropdown.Item>
-                <Dropdown.Item id='EtoJ' onClick={handleDictionaryType}><Text textId="ejDescription" /></Dropdown.Item>
             </DropdownButton>
             
             <FormControl 
