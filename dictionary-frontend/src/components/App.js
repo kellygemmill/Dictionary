@@ -8,13 +8,15 @@ const App = () => {
   
     return (
         <LanguageProvider>
-            <NavigationBar className='navigation-bar' />
-            <h1><Text textId='dictionary' /></h1>
-            <div className='arrow-section'>
-                <h3><Text textId='jArrowE' /></h3>
-                <h3><Text textId='jArrowJ' /></h3>
+            <div className="content">
+                <NavigationBar className='navigation-bar' />
+                <h1><Text textId='dictionary' /></h1>
+                <div className='arrow-section'>
+                    <h3><Text textId='jArrowE' /></h3>
+                    <h3><Text textId='jArrowJ' /></h3>
+                </div>
+                <SearchArea />
             </div>
-            <SearchArea />
             <Footer />
         </LanguageProvider>
     );

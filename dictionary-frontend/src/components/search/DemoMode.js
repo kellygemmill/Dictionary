@@ -19,17 +19,19 @@ const Directions = ({setQuery, lookupWord}) => {
                     <h5 className="demo-mode-title">Demo Mode</h5><h5 className="demo-min-symbol">—</h5>
                 </Accordion.Toggle>
             </Card>
-            <Card bg='dark' text='white'>
+            <Card bg='light' >
                 <Accordion.Collapse eventKey="0">
-                    <Card.Body className="directions-body">
-                        <ul>
-                            <li>Click "Generate Search Term" below to populate the search box with a random Japanese term, then click "Search" to look up the word.</li>
-                            <li>Select the desired dictionary set with the dropdown menu to the left of the search box.</li>
-                            <li>Change the interface language with the dropdown menu in the upper right corner.</li>
-                        </ul>
-                        <Button className="sample-search-button" variant="outline-light" onClick={generateSearchTerm}>Generate Random Search Term</Button>
-                        {sampleSearch ? <Button className="sample-search-button" variant="outline-light" onClick={lookupWord}>Search</Button> : <br></br>}
-                    </Card.Body>
+                    <Card className='directions-body'>
+                        <Card.Body >
+                            <ul>
+                                <li>Click "Generate Search Term" below to populate the search box with a random Japanese term, then click "Search" to look up the word.</li>
+                                <li>Select the desired dictionary set with the dropdown menu to the left of the search box.</li>
+                                <li>Change the interface language with the dropdown menu in the upper right corner.</li>
+                            </ul>
+                            <Button className="sample-search-button" variant="outline-dark" onClick={generateSearchTerm}>Generate Random Search Term</Button>
+                            {sampleSearch ? <Button className="sample-search-button" variant="outline-dark" onClick={lookupWord}>Search</Button> : <br></br>}
+                        </Card.Body>
+                    </Card>
                 </Accordion.Collapse>
             </Card>
         </Accordion>
