@@ -16,8 +16,10 @@ const Directions = ({setQuery, lookupWord}) => {
         <Accordion className="directions" defaultActiveKey="0">
             <Card bg='dark' text='white'>
                 <Accordion.Toggle as={Card.Header} className = "directions-title" eventKey="0">
-                    <h5>Demo Mode</h5>
+                    <h5 className="demo-mode-title">Demo Mode</h5><h5 className="demo-min-symbol">—</h5>
                 </Accordion.Toggle>
+            </Card>
+            <Card bg='dark' text='white'>
                 <Accordion.Collapse eventKey="0">
                     <Card.Body className="directions-body">
                         <ul>

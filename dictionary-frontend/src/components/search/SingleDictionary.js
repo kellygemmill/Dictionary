@@ -8,15 +8,14 @@ const SingleDictionary = ({dictionary, results}) => {
         <Accordion className="directions" defaultActiveKey="0">
             <Card bg='dark' text='white'>
                 <Accordion.Toggle as={Card.Header} className = "directions-title" eventKey="0">
-                    <h5>{dictionary.name}</h5>
+                <h5 className="demo-mode-title">{dictionary.name}</h5><h5 className="demo-min-symbol">—</h5>
                 </Accordion.Toggle>
-                </Card>
+            </Card>
+            <Card className="single-dictionary">
                 <Accordion.Collapse eventKey="0">
-                <Card className="single-dictionary">
                     <SingleDictionaryResults dictionary={dictionary} results={results} />
-                </Card>
                 </Accordion.Collapse>
-            
+            </Card>
         </Accordion>
     )
 }
