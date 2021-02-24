@@ -18,5 +18,7 @@
     "sudoku": "数独ソルバー",
     "dictionary": "辞書",
     "contact": "お問い合わせ",
-    "summary": "全てを表示"
+    "summary": "全てを表示",
+    "jArrowE": "日本語　⇨　英語",
+    "jArrowJ": "日本語　⇨　日本語"
 }

@@ -18,5 +18,7 @@
     "sudoku": "Sudoku Solver",
     "dictionary": "Dictionary",
     "contact": "Contact",
-    "summary": "Show All"
+    "summary": "Show All",
+    "jArrowE": "Japanese ⇨ English",
+    "jArrowJ": "Japanese ⇨ Japanese"
 }
