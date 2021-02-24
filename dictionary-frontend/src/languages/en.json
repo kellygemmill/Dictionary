@@ -1,8 +1,6 @@
 {
     "pageTitle": "Dictionary",
-    "jArrowJ": "Japanese ⇨ Japanese",
-    "jArrowE": "Japanese ⇨ English",
-    "searchDescription": "Enter Japanese search term",
+    "searchDescription": "Enter search term",
     "searchButton": "Search",
     "viewOnGitHub": "View on GitHub",
     "ALL": "All",
@@ -18,5 +16,7 @@
     "projects": "Projects",
     "github": "GitHub",
     "sudoku": "Sudoku Solver",
-    "dictionary": "Dictionary"
+    "dictionary": "Dictionary",
+    "contact": "Contact",
+    "summary": "Show All"
 }
